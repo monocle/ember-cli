@@ -39,6 +39,8 @@ module.exports = function(grunt) {
     });
   });
 
+  grunt.loadTasks('tasks');
+
   grunt.registerTask('ember:release', ['test', 'release']);
   for(var level in ['patch', 'major', 'minor']) {
     grunt.registerTask('ember:release:' + level, ['test', 'release:' + level]);

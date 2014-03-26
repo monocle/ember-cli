@@ -1,0 +1,5 @@
+@import "vendor-test/testing";
+
+.test {
+  @include add(1px, 2px);
+}
