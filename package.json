@@ -1,12 +1,12 @@
 {
   "name": "ember-cli",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "description": "Command line tool for developing ambitious ember.js apps",
   "bin": {
     "ember": "./bin/ember"
   },
   "scripts": {
-    "test": "mocha --timeout 8000 --reporter spec tests/**/*-test.js tests/**/*-slow.js",
+    "test": "mocha --timeout 8000 --reporter spec tests/**/*-test.js tests/**/*/*-test.js tests/**/*-slow.js",
     "autotest": "mocha --watch --reporter spec tests/**/*-test.js"
   },
   "repository": {
@@ -54,7 +54,8 @@
     "rsvp": "~3.0.6",
     "through": "^2.3.4",
     "tiny-lr": "0.0.5",
-    "walk-sync": "^0.1.1"
+    "walk-sync": "^0.1.1",
+    "proxy-middleware": "^0.5.0"
   },
   "devDependencies": {
     "chai": "^1.9.1",

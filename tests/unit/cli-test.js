@@ -1,20 +1,20 @@
 'use strict';
 
-var assert = require('../helpers/assert');
-var stub = require('../helpers/stub');
-var MockUI = require('../helpers/mock-ui');
-var Insight = require('../../lib/utilities/insight');
-var Cli = require('../../lib/cli');
+var assert   = require('../helpers/assert');
+var stub     = require('../helpers/stub').stub;
+var MockUI   = require('../helpers/mock-ui');
+var Insight  = require('../../lib/utilities/insight');
+var Cli      = require('../../lib/cli');
 var baseArgs = ['node', 'path/to/cli'];
-var extend = require('lodash-node/compat/objects/assign');
-var brocEnv = require('broccoli-env');
+var extend   = require('lodash-node/compat/objects/assign');
+var brocEnv  = require('broccoli-env');
 
 var ui;
 var commands;
 var insight;
 var argv;
 // helper to similate running the CLI
-function ember(args) {
+function ember(args, defaults) {
   var argv;
 
   if (args) {
@@ -23,7 +23,7 @@ function ember(args) {
     argv = baseArgs;
   }
 
-  return new Cli(argv, commands, ui, insight).run();
+  return new Cli(argv, commands, ui, insight).run(defaults);
 }
 
 function stubCommand(name) {
@@ -308,6 +308,18 @@ describe('Unit: CLI', function(){
     assert(/The specified command .*unknownCommand.* is invalid/.test(ui.output[0]), 'expected an invalid command message');
     assert.equal(foo.called, 0, 'exptected the foo command no to be run');
     assert.equal(help.called, 0, 'expected the help command to be run');
+  });
+
+  describe('default options config file', function() {
+    it('reads default options from .ember-cli file', function() {
+      var defaults = ['--output', process.cwd()];
+      var build = stubCommand('build');
+
+      ember(['build'], defaults);
+
+      var options = build.calledWith[0][0].cliOptions;
+      assert.equal(options.output, process.cwd());
+    });
   });
 
   describe('analytics tracking', function() {

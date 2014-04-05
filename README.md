@@ -2,6 +2,8 @@
 
 An ember command line utility.
 
+Supports node 0.10.5 and npm 1.4.6.
+
 ## Community
 
 * irc: #ember-cli on freenode
@@ -57,6 +59,15 @@ ember init [app-name] [--dry-run] [--skip-npm-install]
 ember new  [app-name]
 ```
 
+### Default Flags
+
+You can provide default flags by creating a file in your project's root called `.ember-cli`. For example, say I have a file called `.ember-cli` with the contents:
+
+```
+--proxy-port 3000
+```
+
+Any time I run `ember server` it will always work as if I had run `ember server --proxy-port 3000`. This works with any flag for any command.
 ### Developing
 
 You may want to use `npm link` to make your local source directory a globally installed package.
@@ -87,6 +98,24 @@ npm install --save-dev broccoli-sass
 ```
 
 Building will now compile `app/styles/app.scss` into `app.css` in your output.
+
+#### CoffeeScript
+
+You can also use [CoffeeScript](http://coffeescript.org/) with `ember-cli`.
+
+Install the `broccoli-coffee` package:
+
+```bash
+npm install --save-dev broccoli-coffee
+```
+
+Now CoffeeScript files will be complied.
+
+Note that `export` and `default` are reserved words in CoffeeScript so they must be escaped:
+
+```coffee
+`export default Router`
+```
 
 #### Contributing
 
