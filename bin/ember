@@ -14,4 +14,8 @@ if (installedViaNPM) {
               chalk.bold('npm link') + '. (Report on github if this is wrong!)');
 }
 
-require('../lib/cli').run(process.argv);
+require('../lib/cli')({
+  argv: process.argv.slice(1),
+  inputStream: process.stdin,
+  outputStream: process.stdout
+});
