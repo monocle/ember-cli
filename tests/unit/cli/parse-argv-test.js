@@ -1,4 +1,5 @@
 'use strict';
+/*jshint expr: true*/
 
 var expect    = require('chai').expect;
 var parseArgv = require('../../../lib/cli/parse-argv');
@@ -66,7 +67,7 @@ describe('cli/parse-argv.js', function() {
   });
 
   it('parseArgv() should print a message if a required option is missing', function() {
-  expect(parse(['ember', 'develop-ember-cli'])).to.be.null;
+    expect(parse(['ember', 'develop-ember-cli'])).to.be.null;
     expect(output.shift()).to.match(/requires the option.*package-name/);
   });
 });

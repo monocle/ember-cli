@@ -126,7 +126,7 @@ module.exports = {
   - Acronyms:
     - Okay: `url`, `id`, `rootURL` (property) or `URL`, `URLParser` (class)
     - Wrong: `Url`,`rootUrl`
-    - We stick to how it's done in ember -> `rootURL`
+    - We stick with how it's done in ember -> `rootURL`
 - No comma separated var satements (`var cool = 123, supercool = 456;`)
 
 This list only contains style decisions not already covered by JSHint (e.g. mandatory semicolons and other rules are omitted).
