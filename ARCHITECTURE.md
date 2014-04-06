@@ -77,7 +77,7 @@ Located in `lib/tasks`.
 Tasks do the real work. They should also do only one thing: For example there are seperate `bower-install` and `npm-install` tasks, not just one unified `install` task. And they should not call other tasks: For example `install-blueprint` shouldn't call `npm-install` directly. That's because the task sequence is determined by the command and thus should be declared there. A tasks has to return a promise which resolves or rejects depending on whether it ran through successfully or not.
 
 The promise of a task should either
-- resolve to `undefined`
+- fulfill to `undefined`
 - reject with an `Error` instance if the error is unhandled
 - or reject with `undefined` if it was handled. In this case the task should log something via the `ui` first.
 
@@ -114,7 +114,7 @@ module.exports = {
 - Recommended line length <= 80 characters
 - No `console.log`, we've our own logging system
 - HTML and CSS: Double quotes, JavaScript: Single quotes
-- naming conventions
+- Naming conventions
   - Dasherized (`some-thing`)
     - file, folder and package names
     - CSS classes
@@ -127,5 +127,38 @@ module.exports = {
     - Okay: `url`, `id`, `rootURL` (property) or `URL`, `URLParser` (class)
     - Wrong: `Url`,`rootUrl`
     - We stick to how it's done in ember -> `rootURL`
-- No multivar satements (`var cool = 123, supercool = 456;`)
-- Aligned equal signes for `require`s
+- No comma separated var satements (`var cool = 123, supercool = 456;`)
+
+This list only contains style decisions not already covered by JSHint (e.g. mandatory semicolons and other rules are omitted).
+
+### Indentation
+#### Aligned require statments
+``` JavaScript
+var RSVP    = require('rsvp');
+var Promise = RSVP.Promise;
+```
+
+#### Multiline function call in return statement
+``` JavaScript
+// Correct
+return someFunction(
+    someArgument,
+    otherArgument
+  );
+
+// Wrong
+return someFunction(
+  someArgument,
+  otherArgument
+);
+
+
+// Correct
+return returnsAPromise()
+  .then(...)
+  .catch(...);
+
+// Wrong
+return retursAPromise().then(...)
+.catch(...);
+```
