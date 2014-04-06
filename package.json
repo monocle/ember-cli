@@ -55,7 +55,8 @@
     "through": "^2.3.4",
     "tiny-lr": "0.0.5",
     "walk-sync": "^0.1.1",
-    "proxy-middleware": "^0.5.0"
+    "proxy-middleware": "^0.5.0",
+    "glob": "^3.2.9"
   },
   "devDependencies": {
     "chai": "^1.9.1",
@@ -65,6 +66,8 @@
     "grunt-release": "^0.7.0",
     "mocha": "~1.18.0",
     "mocha-jshint": "0.0.7",
-    "rewire": "^2.0.0"
+    "rewire": "^2.0.0",
+    "underscore": "^1.6.0",
+    "chai-fuzzy": "^1.4.0"
   }
 }
