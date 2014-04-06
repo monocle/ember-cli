@@ -138,7 +138,7 @@ var RSVP    = require('rsvp');
 var Promise = RSVP.Promise;
 ```
 
-#### Multiline function call in return statement
+#### Multiline return statement
 ``` JavaScript
 // Correct
 return someFunction(
